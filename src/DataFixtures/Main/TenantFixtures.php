@@ -10,10 +10,12 @@ class TenantFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $prefix = 'multitenancy_';
+
         $tenant = new Tenant();
         $tenant
             ->setName('Fist Tenant')
-            ->setDbname('tenant1')
+            ->setDbname($prefix . 'tenant1')
             ->setDbUser('root')
             ->setDbpassword('');
         $manager->persist($tenant);
@@ -21,7 +23,7 @@ class TenantFixtures extends Fixture
         $tenant = new Tenant();
         $tenant
             ->setName('Second Tenant')
-            ->setDbname('tenant2')
+            ->setDbname($prefix . 'tenant2')
             ->setDbUser('root')
             ->setDbpassword('');
         $manager->persist($tenant);

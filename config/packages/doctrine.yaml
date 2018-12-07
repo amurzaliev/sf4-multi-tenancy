@@ -9,20 +9,25 @@ doctrine:
   dbal:
     default_connection: main
     connections:
+
       main:
         url: '%env(DATABASE_URL)%'
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
+
       tenant:
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
         host: '127.0.0.1'
         port: '3306'
+        wrapper_class: App\Doctrine\DBAL\TenantConnection
+
   orm:
     default_entity_manager: main
     entity_managers:
+
       main:
         connection: main
         mappings:
@@ -32,10 +37,11 @@ doctrine:
             dir: '%kernel.project_dir%/src/Entity/Main'
             prefix: 'App\Entity\Main'
             alias: Main
+
       tenant:
         connection: tenant
         mappings:
-          Customer:
+          Tenant:
             is_bundle: false
             type: annotation
             dir: '%kernel.project_dir%/src/Entity/Tenant'

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multi-tenancy{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Data from different tenant's databases:</h1>
+
+    {{ dump(users) }}
+</div>
+{% endblock %}
