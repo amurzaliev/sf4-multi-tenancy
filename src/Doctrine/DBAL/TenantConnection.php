@@ -45,7 +45,7 @@ class TenantConnection extends Connection
         $driverOptions = $this->params['driverOptions'] ?? [];
         $user = $this->params['user'] ?? null;
         $password = $this->params['password'] ?? null;
-        dump($this->params);
+
         $this->_conn = $this->_driver->connect($this->params, $user, $password, $driverOptions);
         $this->isConnected = true;
 
